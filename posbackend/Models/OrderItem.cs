@@ -1,25 +1,21 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace posbackend.Models;
-
-public class OrderItem
+namespace posbackend.Models
 {
-    [Key]
-    public int Id { get; set; }
-
-    public int OrderId { get; set; }
-
-    [ForeignKey("OrderId")]
-    public Order? Order { get; set; }
-
-    public int ProductId { get; set; }
-
-    [ForeignKey("ProductId")]
-    public Product? Product { get; set; }
-
-    public int Quantity { get; set; }
-
-    [Column(TypeName = "decimal(18,2)")]
-    public decimal Price { get; set; }
+    public class OrderItem
+    {
+        [Key]
+        public int Id { get; set; }
+        public int OrderId { get; set; }
+        public int VariantId { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal DiscountTotal { get; set; }
+        public decimal Tax { get; set; }
+        public string ItemCategory { get; set; }
+        public int? StaffUserId { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
 }
